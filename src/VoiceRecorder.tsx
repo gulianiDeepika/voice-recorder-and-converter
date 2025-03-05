@@ -38,12 +38,13 @@ const VoiceRecorder: React.FC = () => {
   const convertToText = async (audioBlob: Blob) => {
     const formData = new FormData();
     formData.append("file", audioBlob, "recording.wav");
+	formData.append("model", "whisper-1");
 
     try {
       const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer YOUR_OPENAI_API_KEY`,
+          "Authorization": `Bearer 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`,
         },
         body: formData,
       });
